@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+
 
 int title_screen();
 int game_start_screen();
@@ -69,25 +69,27 @@ int title_screen()
     /* 문자열 가공 */
     for (int row = 1; row <= 15; row++)
     {
-        for (int col = 1; col <= 30; col++)
-        {
-            if (col == 1 || col == 30 || row == 1 || row == 15)
+        if (row == 8) {
+            printf("-     1.게임시작          -\n");
+            printf("-     2.게임정보          -\n");
+            printf("-     3.게임 종료         -\n");
+        } else {
+            for (int col = 1; col <= 30; col++)
             {
-                putchar(screen[(row - 1) * 31 + col - 1]);
+                if (col == 1 || col == 30 || row == 1 || row == 15)
+                {
+                    putchar(screen[(row - 1) * 31 + col - 1]);
+                }
+                else
+                {
+                    putchar(' ');
+                }
             }
-            else
-            {
-                putchar(' ');
-            }
+            putchar('\n');
         }
-        putchar('\n');
     }
-
-    /*메뉴 추가 */
-    printf("1. 게임 시작\n");
-    printf("2. 게임 정보\n");
-    printf("3. 게임 종료\n");
 }
+
 
 int game_start_screen()
 {
