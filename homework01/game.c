@@ -25,26 +25,42 @@ int main()
             game_info_screen();
             break;
         case 3:
-            printf("------------------------------\n");
-            printf("-      게임을 종료합니다.      -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("-                            -\n");
-            printf("------------------------------\n");
+        char screen[465]; /* 가로 : 30 + 1(개행문자)  세로 15 */
+        int i = 0;
+        while (i < 465)
+    {
+        if (i % 31 == 30)
+            screen[i] = '\n'; /* 개행문자 삽입 */
+        else
+            screen[i] = '-';
+        i = i + 1;
+    }
+    screen[465] = '\0';
+
+    /* 문자열 가공3 게임종료 화면 */
+    for (int row = 1; row <= 15; row++)
+    {
+        if (row == 8) {
+            printf("-     게임을 종료합니다.     -\n");
+        } else {
+            for (int col = 1; col <= 30; col++)
+            {
+                if (col == 1 || col == 30 || row == 1 || row == 15)
+                {
+                    putchar(screen[(row - 1) * 31 + col - 1]);
+                }
+                else
+                {
+                    putchar(' ');
+                }
+            }
+            putchar('\n');
+        }
+    }
 
             game_state = 0;
             break;
-        default:
+            default:
             printf("잘못된 입력입니다. 다시 선택해주세요.\n");
         }
     }
@@ -66,13 +82,13 @@ int title_screen()
     }
     screen[465] = '\0';
 
-    /* 문자열 가공 */
+    /* 문자열 가공 메인화면 */
     for (int row = 1; row <= 15; row++)
     {
         if (row == 8) {
-            printf("-     1.게임시작          -\n");
-            printf("-     2.게임정보          -\n");
-            printf("-     3.게임 종료         -\n");
+            printf("-     1.게임시작             -\n");
+            printf("-     2.게임정보             -\n");
+            printf("-     3.게임 종료            -\n");
         } else {
             for (int col = 1; col <= 30; col++)
             {
@@ -93,42 +109,75 @@ int title_screen()
 
 int game_start_screen()
 {
-     printf("------------------------------\n");
-     printf("-      장소:집                -\n");
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-     오늘은 힘든 하루다       -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("-                            -\n"); 
-     printf("------------------------------\n");
-    /* 게임시작화면. */
-}
+    char screen[465]; /* 가로 : 30 + 1(개행문자)  세로 15 */
+    int i = 0;
+    while (i < 465)
+    {
+        if (i % 31 == 30)
+            screen[i] = '\n'; /* 개행문자 삽입 */
+        else
+            screen[i] = '-';
+        i = i + 1;
+    }
+    screen[465] = '\0';
 
+    /* 문자열 가공2 게임실행 화면 */
+    for (int row = 1; row <= 15; row++)
+    {
+        if (row == 8) {
+            printf("-     장소 : 집              -\n");
+            printf("-                            -\n");
+            printf("-     힘든 하루엿다.         -\n");
+        } else {
+            for (int col = 1; col <= 30; col++)
+            {
+                if (col == 1 || col == 30 || row == 1 || row == 15)
+                {
+                    putchar(screen[(row - 1) * 31 + col - 1]);
+                }
+                else
+                {
+                    putchar(' ');
+                }
+            }
+            putchar('\n');
+        }
+    }
+}
 int game_info_screen()
 {
-    printf("------------------------------\n");
-    printf("-      망햇서요.              -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-    게임이름:일상            -\n");
-    printf("-    버전:0.1                 -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("-                            -\n");
-    printf("------------------------------\n");
+    char screen[465]; /* 가로 : 30 + 1(개행문자)  세로 15 */
+    int i = 0;
+    while (i < 465)
+    {
+        if (i % 31 == 30)
+            screen[i] = '\n'; /* 개행문자 삽입 */
+        else
+            screen[i] = '-';
+        i = i + 1;
+    }
+    screen[465] = '\0';
 
-    printf("게임 정보 화면입니다.\n");
-    /* 게임정보 화면 */
+    /* 문자열 가공4 게임정보 화면 */
+    for (int row = 1; row <= 15; row++)
+    {
+        if (row == 8) {
+            printf("-     게임정보 : 일상        -\n");
+            printf("-                            -\n");
+            printf("-     0.1v                   -\n");
+        } else {
+            for (int col = 1; col <= 30; col++)
+            {
+                if (col == 1 || col == 30 || row == 1 || row == 15)
+                {
+                    putchar(screen[(row - 1) * 31 + col - 1]);
+                }
+                else
+                {
+                    putchar(' ');
+                }
+            }
+            putchar('\n');
+        }
+    }
 }
